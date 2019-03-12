@@ -2,11 +2,17 @@
 import React, { Component } from 'react'
 import { Button, View } from 'react-native'
 import styles from './styles'
-import Login from '../../components/loginComponent'
+import { connect } from 'react-redux'
+import { fetchContacts } from '../../actions'
+import ListComponentWrapper from '../../components/listComponent'
 
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Welcome',
+  }
+
+  componentDidMount(){
+    this.props.fetchContacts()
   }
 
   render() {
@@ -16,9 +22,19 @@ export default class HomeScreen extends Component {
     const { container } = styles
     return (
       <View style={container}>
-        <Login />
         <Button title="Go to Profile" onPress={() => navigate('Profile')} />
+        <ListComponentWrapper />
       </View>
     )
   }
 }
+
+const mapStateToProps = ({ token, movies }) => ({
+  token
+});
+
+const mapDispatchToProps = {
+  fetchContacts
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "RN_bookmarks-tvOS.app"
-               BlueprintName = "RN_bookmarks-tvOS"
-               ReferencedContainer = "container:RN_bookmarks.xcodeproj">
+               BuildableName = "RN_smiliar_movies-tvOS.app"
+               BlueprintName = "RN_smiliar_movies-tvOS"
+               ReferencedContainer = "container:RN_smiliar_movies.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "RN_bookmarks-tvOSTests.xctest"
-               BlueprintName = "RN_bookmarks-tvOSTests"
-               ReferencedContainer = "container:RN_bookmarks.xcodeproj">
+               BuildableName = "RN_smiliar_movies-tvOSTests.xctest"
+               BlueprintName = "RN_smiliar_movies-tvOSTests"
+               ReferencedContainer = "container:RN_smiliar_movies.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "RN_bookmarks-tvOSTests.xctest"
-               BlueprintName = "RN_bookmarks-tvOSTests"
-               ReferencedContainer = "container:RN_bookmarks.xcodeproj">
+               BuildableName = "RN_smiliar_movies-tvOSTests.xctest"
+               BlueprintName = "RN_smiliar_movies-tvOSTests"
+               ReferencedContainer = "container:RN_smiliar_movies.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "RN_bookmarks-tvOS.app"
-            BlueprintName = "RN_bookmarks-tvOS"
-            ReferencedContainer = "container:RN_bookmarks.xcodeproj">
+            BuildableName = "RN_smiliar_movies-tvOS.app"
+            BlueprintName = "RN_smiliar_movies-tvOS"
+            ReferencedContainer = "container:RN_smiliar_movies.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "RN_bookmarks-tvOS.app"
-            BlueprintName = "RN_bookmarks-tvOS"
-            ReferencedContainer = "container:RN_bookmarks.xcodeproj">
+            BuildableName = "RN_smiliar_movies-tvOS.app"
+            BlueprintName = "RN_smiliar_movies-tvOS"
+            ReferencedContainer = "container:RN_smiliar_movies.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "RN_bookmarks-tvOS.app"
-            BlueprintName = "RN_bookmarks-tvOS"
-            ReferencedContainer = "container:RN_bookmarks.xcodeproj">
+            BuildableName = "RN_smiliar_movies-tvOS.app"
+            BlueprintName = "RN_smiliar_movies-tvOS"
+            ReferencedContainer = "container:RN_smiliar_movies.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
