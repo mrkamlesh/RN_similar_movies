@@ -53,7 +53,8 @@ class ListComponent extends Component {
     } else {
       favMovies = favMovies.filter(el => el.data.id !== item.data.id)
     }
-    this.setState({ favMovies }, () => console.log('aa', this.state.favMovies));
+    this.setState({ favMovies })
+    this.props.selectedMovies(favMovies)
   }
 
   renderItem = ({ item }) => (
