@@ -5,6 +5,22 @@ import isEqual from "lodash/isEqual"
 import { RkChoice } from 'react-native-ui-kitten';
 import remove from 'lodash/remove';
 import { getMovieData } from '../actions'
+import { StyleSheet } from 'react-native'
+
+const styles = StyleSheet.create({
+  itemContainer: {
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 20,
+    marginVertical: 5,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 1
+  },
+  checkBox: {
+    backgroundColor: 'gray'
+  }
+})
 
 class ListComponent extends Component {
 
@@ -27,34 +43,39 @@ class ListComponent extends Component {
     }
   }
 
+  _keyExtractor = (item) => item.id;
+
   changeFavMovies = (val, item) => {
     console.log(val, item);
     let favMovies = [ ...this.state.favMovies];
     if (!val) {
       favMovies.push(item);
     } else {
-      //_.remove(favMovies, {
-      //  data.id = item.id
-      //});
-      //favMovies = remove(favMovies, el => el.id === item.id)
       favMovies = favMovies.filter(el => el.data.id !== item.data.id)
     }
     this.setState({ favMovies }, () => console.log('aa', this.state.favMovies));
   }
 
   renderItem = ({ item }) => (
-    <View>
+    <View style={styles.itemContainer}>
       <Text>{item.title}</Text>
       <RkChoice
         rkType='clear'
         selected={false}
         onChange={val => this.changeFavMovies(val, item)}
+        style={styles.checkBox}
       />
     </View>
   )
 
   render() {
-    return <FlatList data={this.props.moviesList} renderItem={this.renderItem} />
+    return (
+      <FlatList
+        data={this.props.moviesList}
+        renderItem={this.renderItem}
+        keyExtractor={this._keyExtractor}
+      />
+    )
   }
 }
 
