@@ -59,3 +59,8 @@ export const getMovieData = (movieName) => (dispatch) => {
     dispatch(movieData(movie));
   }).catch(err => dispatch(movieDataError()));
 };
+
+export const setOnboardingMovies = (movies) => ({
+  type: 'SET_ONBOARDING_MOVIES',
+  movies
+});
