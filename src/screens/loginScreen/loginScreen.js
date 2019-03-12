@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import Reactotron from 'reactotron-react-native'
 import styles from './styles'
-import ListComponent from '../../components/listComponent'
+import LoginWrapper from '../../components/loginComponent'
 
-export default class ProfileScreen extends Component {
+
+export default class LoginScreen extends Component {
+
   render() {
     const { container } = styles
     return (
       <View style={container}>
+        <LoginWrapper />
       </View>
     )
   }
