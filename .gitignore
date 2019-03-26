@@ -4,7 +4,6 @@
 
 # Xcode
 #
-
 build/
 *.pbxuser
 !default.pbxuser
@@ -22,8 +21,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-.history
-Liquid-Design/
+
 # Android/IntelliJ
 #
 build/
@@ -31,20 +29,13 @@ build/
 .gradle
 local.properties
 *.iml
-.history
-.vscode
-dist
-
 
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
-third-party
-
-# test coverage
-coverage/*
+third-party/
 
 # BUCK
 buck-out/
