@@ -16,7 +16,8 @@ class OnboardingScreen extends Component {
   }
 
   submit = () => {
-    this.props.setOnboardingMovies(this.state.movies)
+    this.props.setOnboardingMovies(this.state.movies);
+    this.props.navigation.navigate('App');
   }
 
   selectedMovies = movies => this.setState({ movies })

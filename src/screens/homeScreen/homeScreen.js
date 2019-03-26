@@ -23,7 +23,6 @@ class HomeScreen extends Component {
     return (
       <View style={container}>
         <Button title="Go to Profile" onPress={() => navigate('Profile')} />
-        <ListComponentWrapper />
       </View>
     )
   }
