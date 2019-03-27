@@ -1,4 +1,6 @@
-/** @format */
+/**
+ * @format
+ */
 import './ReactotronConfig'
 
 import { AppRegistry } from 'react-native'
