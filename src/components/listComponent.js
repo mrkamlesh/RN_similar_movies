@@ -1,85 +1,36 @@
-import React, { Component } from 'react'
-import { Text, FlatList, View } from 'react-native'
+import React, {useState, useEffect} from 'react'
 import { connect } from "react-redux";
-import isEqual from "lodash/isEqual"
-import { RkChoice } from 'react-native-ui-kitten';
-import remove from 'lodash/remove';
 import { getMovieData } from '../actions'
-import { StyleSheet } from 'react-native'
+import { MoviesList } from './moviesList';
 
-const styles = StyleSheet.create({
-  itemContainer: {
-    height: 50,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 20,
-    marginVertical: 5,
-    borderBottomColor: 'gray',
-    borderBottomWidth: 1
-  },
-  checkBox: {
-    backgroundColor: 'gray'
-  }
-})
+const ListComponent = ({movies, moviesList = [], getMovieData, selectedMovies}) => {
+  const [moviesFetched, setmoviesFetched] = useState(false);
+  const [favMovies, setfavMovies] = useState([]);
 
-class ListComponent extends Component {
-
-  shouldComponentUpdate(nextProps) {
-    return !isEqual(this.props.movies, nextProps.movies) || !isEqual(this.props.moviesList, nextProps.moviesList)
-  }
-
-  state = {
-    moviesFetched: false,
-    favMovies: [],
-  }
-
-  componentDidUpdate(){
-    const { movies } = this.props;
-    if (movies.length > 0 && !this.state.moviesFetched) {
-      this.props.movies.forEach(movie => {
-        this.props.getMovieData(movie.name);
+  useEffect(() => {
+    if (movies.length > 0 && !moviesFetched) {
+      movies.forEach(movie => {
+        getMovieData(movie.name);
       });
-      this.setState({moviesFetched: true})
+      setmoviesFetched(true);
     }
-  }
-
-  _keyExtractor = (item) => item.id;
+  }, [movies, moviesList]);
 
   changeFavMovies = (val, item) => {
-    console.log(val, item);
-    let favMovies = [ ...this.state.favMovies];
+    let newFavMovies = [ ...favMovies];
     if (!val) {
-      favMovies.push(item);
+      newFavMovies.push(item);
     } else {
-      favMovies = favMovies.filter(el => el.data.id !== item.data.id)
+      newFavMovies = favMovies.filter(el => el.data.id !== item.data.id);
     }
-    this.setState({ favMovies })
-    this.props.selectedMovies(favMovies)
+    setfavMovies(newFavMovies);
+    selectedMovies(newFavMovies);
   }
 
-  renderItem = ({ item }) => (
-    <View style={styles.itemContainer}>
-      <Text>{item.title}</Text>
-      <RkChoice
-        rkType='clear'
-        selected={false}
-        onChange={val => this.changeFavMovies(val, item)}
-        style={styles.checkBox}
-      />
-    </View>
+  return (
+    <MoviesList moviesList={moviesList} selectItem={(val, item) => changeFavMovies(val, item)}/>
   )
-
-  render() {
-    return (
-      <FlatList
-        data={this.props.moviesList}
-        renderItem={this.renderItem}
-        keyExtractor={this._keyExtractor}
-      />
-    )
-  }
 }
-
 
 const mapStateToProps = ({movies, moviesList}) => ({
   movies,
