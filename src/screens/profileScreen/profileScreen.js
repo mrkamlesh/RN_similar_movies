@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import Reactotron from 'reactotron-react-native'
 import styles from './styles'
-import ListComponent from '../../components/listComponent'
+import MyMovies from '../../components/myMovies'
 
-export default class ProfileScreen extends Component {
-  render() {
-    const { container } = styles
-    return (
-      <View style={container}>
-      </View>
-    )
-  }
+const ProfileScreen = () => {
+  const { container } = styles
+  return (
+    <View style={container}>
+      <MyMovies />
+    </View>
+  )
 }
+
+export default ProfileScreen;

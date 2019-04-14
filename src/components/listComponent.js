@@ -41,4 +41,4 @@ const mapDispatchToProps = {
   getMovieData
 };
 
-export default ListComponentWrapper = connect(mapStateToProps, mapDispatchToProps)(ListComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);

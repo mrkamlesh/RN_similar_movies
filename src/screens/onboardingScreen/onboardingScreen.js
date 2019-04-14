@@ -1,61 +1,26 @@
-import React, { Component } from 'react'
-import { View, Button } from 'react-native'
-import styles from './styles'
-import ListComponentWrapper from '../../components/listComponent'
+import React, { Component, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchContacts, setOnboardingMovies } from '../../actions'
+import OnboardingList from '../../components/onboardingList/onboardingList';
 
-class OnboardingScreen extends Component {
+const OnboardingScreen = ({fetchContacts, setOnboardingMovies, navigation}) => {
+  const [movies, setmovies] = useState(null);
 
-  state = {
-    movies: null
+  useEffect(() => fetchContacts(), []);
+
+  const submit = () => {
+    setOnboardingMovies(movies);
+    navigation.navigate('App');
   }
 
-  componentDidMount(){
-    this.props.fetchContacts()
-  }
+  const selectedMovies = movies => setmovies(movies)
 
-  submit = () => {
-    this.props.setOnboardingMovies(this.state.movies);
-    this.props.navigation.navigate('App');
-  }
-
-  selectedMovies = movies => this.setState({ movies })
-
-  renderButton = () => (
-    <View style={styles.buttonContainer}>
-      <View style={styles.buttonWrapper}>
-        <Button
-          style={styles.button}
-          color='white'
-          title='Next'
-          onPress={this.submit}
-        />
-      </View>
-    </View>
-  )
-  
-  render() {
-    const { mainContainer, listContainer } = styles
-    return (
-      <View style={mainContainer}>
-        <View style={listContainer}>
-          <ListComponentWrapper selectedMovies={this.selectedMovies} />
-        </View>
-        {this.renderButton()}
-      </View>
-      
-    )
-  }
+  return <OnboardingList selectedMovies={selectedMovies} submit={submit} />
 }
-
-const mapStateToProps = ({ token }) => ({
-  token
-});
 
 const mapDispatchToProps = {
   fetchContacts,
   setOnboardingMovies,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OnboardingScreen)
+export default connect(null, mapDispatchToProps)(OnboardingScreen)
