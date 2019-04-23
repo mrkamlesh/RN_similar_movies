@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import styles from './styles'
+import { fetchSimilarMovies } from '../../actions'
 import SwiperComponent from '../../components/SwiperComponent/swiperComponent'
 
-const HomeScreen = ({ onboardingMovies }) => {
+const HomeScreen = ({ fetchSimilarMovies, onboardingMovies }) => {
+  useEffect(() => fetchSimilarMovies(), [])
+
   const { container } = styles
   return (
     <View style={container}>
@@ -17,7 +20,11 @@ const mapStateToProps = state => ({
   onboardingMovies: state.onboardingMovies,
 })
 
+const mapDispatchToProps = {
+  fetchSimilarMovies,
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(HomeScreen)
