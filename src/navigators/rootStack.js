@@ -15,15 +15,15 @@ const RootStack = createBottomTabNavigator(
         const { routeName } = navigation.state
         let iconName
         if (routeName === 'Home') {
-          iconName = `ios-information-circle${focused ? '' : '-outline'}`
-        } else if (routeName === 'Settings') {
-          iconName = `ios-options${focused ? '' : '-outline'}`
+          iconName = `ios-videocam`
+        } else if (routeName === 'Profile') {
+          iconName = `ios-person`
         }
         return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />
       },
     }),
     tabBarOptions: {
-      activeTintColor: 'tomato',
+      activeTintColor: 'blue',
       inactiveTintColor: 'gray',
     },
   }

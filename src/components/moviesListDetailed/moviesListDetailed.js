@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text, FlatList, View, Image } from 'react-native'
-import styles from '.styles'
+import { Text, FlatList, View, Image, ImageBackground } from 'react-native'
+import styles from './styles'
 import { tmdbImage } from '../../utils/images';
 
 export const MoviesListDetailed = ({moviesList}) => {
@@ -9,11 +9,17 @@ export const MoviesListDetailed = ({moviesList}) => {
   
   renderItem = ({ item }) => {
     let uri = tmdbImage(item.data.poster_path)
+    const { itemContainer, imageBackground, imageStyle, title, shadowView } = styles
     return (
-      <View style={styles.itemContainer}>
-        <Text>{item.title}</Text>
-        <Text>{item.data.overview}</Text>
-        <Image source={{uri}} style={styles.image}/> 
+      <View style={itemContainer}>
+        <ImageBackground source={{uri}}
+          style={imageBackground}
+          imageStyle={imageStyle}
+        >
+          <View style={shadowView}>
+            <Text style={title}>{item.title}</Text>
+          </View>
+        </ImageBackground>
       </View>
     )
   }
@@ -23,6 +29,7 @@ export const MoviesListDetailed = ({moviesList}) => {
       data={moviesList}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
+      style={styles.listContainer}
     />
   )
 }
