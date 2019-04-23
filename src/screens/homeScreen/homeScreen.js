@@ -1,39 +1,23 @@
-
-import React, { Component } from 'react'
-import { Button, View } from 'react-native'
-import styles from './styles'
+import React from 'react'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { fetchContacts } from '../../actions'
-import ListComponentWrapper from '../../components/listComponent'
+import styles from './styles'
+import SwiperComponent from '../../components/SwiperComponent/swiperComponent'
 
-class HomeScreen extends Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  }
-
-  componentDidMount(){
-    this.props.fetchContacts()
-  }
-
-  render() {
-    const {
-      navigation: { navigate },
-    } = this.props
-    const { container } = styles
-    return (
-      <View style={container}>
-        <Button title="Go to Profile" onPress={() => navigate('Profile')} />
-      </View>
-    )
-  }
+const HomeScreen = ({ onboardingMovies }) => {
+  const { container } = styles
+  return (
+    <View style={container}>
+      <SwiperComponent movies={onboardingMovies} />
+    </View>
+  )
 }
 
-const mapStateToProps = ({ token, movies }) => ({
-  token
-});
+const mapStateToProps = state => ({
+  onboardingMovies: state.onboardingMovies,
+})
 
-const mapDispatchToProps = {
-  fetchContacts
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
+export default connect(
+  mapStateToProps,
+  null
+)(HomeScreen)
