@@ -4,6 +4,7 @@ import { movies } from './movies'
 import { moviesList } from './moviesList'
 import { onboardingMovies } from './onboardingMovies'
 import similarMovies from './similarMovies'
+import similarMoviesList from './similarMoviesList'
 
 export default combineReducers({
   auth,
@@ -11,4 +12,5 @@ export default combineReducers({
   moviesList,
   onboardingMovies,
   similarMovies,
+  similarMoviesList,
 })

@@ -18,6 +18,7 @@ const SwiperComponent = ({ movies }) => (
       cardIndex={0}
       backgroundColor="#4FD0E9"
       stackSize={3}
+      verticalSwipe={false}
     />
   </View>
 )
