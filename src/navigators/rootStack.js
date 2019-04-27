@@ -25,6 +25,8 @@ const RootStack = createBottomTabNavigator(
     tabBarOptions: {
       activeTintColor: 'blue',
       inactiveTintColor: 'gray',
+      activeBackgroundColor: '#FAFAFA',
+      inactiveBackgroundColor: '#FAFAFA',
     },
   }
 )
