@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styles from './styles'
-import MyMovies from '../../components/myMovies'
+import TabSetComponent from '../../components/tabSetComponent'
 
 const ProfileScreen = () => {
   const { container } = styles
   return (
     <View style={container}>
-      <MyMovies />
+      <TabSetComponent />
     </View>
   )
 }
 
-export default ProfileScreen;
+export default ProfileScreen

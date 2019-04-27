@@ -1,11 +1,11 @@
 import React from 'react'
-import { connect } from "react-redux";
-import { MoviesListDetailed } from './moviesListDetailed/moviesListDetailed';
+import { connect } from 'react-redux'
+import MoviesListDetailed from './moviesListDetailed/moviesListDetailed'
 
-const MyMovies = ({onboardingMovies}) => <MoviesListDetailed moviesList={onboardingMovies} />
+const MyMovies = ({ moviesList }) => <MoviesListDetailed moviesList={moviesList} />
 
-const mapStateToProps = ({onboardingMovies}) => ({
-  onboardingMovies
+const mapStateToProps = ({ moviesList }) => ({
+  moviesList,
 })
 
-export default connect(mapStateToProps)(MyMovies);
+export default connect(mapStateToProps)(MyMovies)

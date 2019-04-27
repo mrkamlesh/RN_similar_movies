@@ -1,21 +1,16 @@
 import React from 'react'
-import { Text, FlatList, View, Image, ImageBackground } from 'react-native'
+import { Text, FlatList, View, ImageBackground } from 'react-native'
 import styles from './styles'
-import { tmdbImage } from '../../utils/images';
+import { tmdbImage } from '../../utils/images'
 
-export const MoviesListDetailed = ({moviesList}) => {
-
-  keyExtractor = item => item.id;
-  
-  renderItem = ({ item }) => {
-    let uri = tmdbImage(item.data.poster_path)
+const MoviesListDetailed = ({ moviesList }) => {
+  const keyExtractor = item => item.id
+  const renderItem = ({ item }) => {
+    const uri = tmdbImage(item.data.poster_path)
     const { itemContainer, imageBackground, imageStyle, title, shadowView } = styles
     return (
       <View style={itemContainer}>
-        <ImageBackground source={{uri}}
-          style={imageBackground}
-          imageStyle={imageStyle}
-        >
+        <ImageBackground source={{ uri }} style={imageBackground} imageStyle={imageStyle}>
           <View style={shadowView}>
             <Text style={title}>{item.title}</Text>
           </View>
@@ -34,3 +29,4 @@ export const MoviesListDetailed = ({moviesList}) => {
   )
 }
 
+export default MoviesListDetailed

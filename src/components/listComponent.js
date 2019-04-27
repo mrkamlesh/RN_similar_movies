@@ -1,44 +1,47 @@
-import React, {useState, useEffect} from 'react'
-import { connect } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import { getMovieData } from '../actions'
-import { MoviesList } from './moviesList';
+import MoviesList from './moviesList'
 
-const ListComponent = ({movies, moviesList = [], getMovieData, selectedMovies}) => {
-  const [moviesFetched, setmoviesFetched] = useState(false);
-  const [favMovies, setfavMovies] = useState([]);
+const ListComponent = ({ movies, moviesList = [], getMovieData, selectedMovies }) => {
+  const [moviesFetched, setmoviesFetched] = useState(false)
+  const [favMovies, setfavMovies] = useState([])
 
   useEffect(() => {
     if (movies.length > 0 && !moviesFetched) {
       movies.forEach(movie => {
-        getMovieData(movie.name);
-      });
-      setmoviesFetched(true);
+        getMovieData(movie.name)
+      })
+      setmoviesFetched(true)
     }
-  }, [movies, moviesList]);
+  }, [movies, moviesList])
 
-  changeFavMovies = (val, item) => {
-    let newFavMovies = [ ...favMovies];
+  const changeFavMovies = (val, item) => {
+    let newFavMovies = [...favMovies]
     if (!val) {
-      newFavMovies.push(item);
+      newFavMovies.push(item)
     } else {
-      newFavMovies = favMovies.filter(el => el.data.id !== item.data.id);
+      newFavMovies = favMovies.filter(el => el.data.id !== item.data.id)
     }
-    setfavMovies(newFavMovies);
-    selectedMovies(newFavMovies);
+    setfavMovies(newFavMovies)
+    selectedMovies(newFavMovies)
   }
 
   return (
-    <MoviesList moviesList={moviesList} selectItem={(val, item) => changeFavMovies(val, item)}/>
+    <MoviesList moviesList={moviesList} selectItem={(val, item) => changeFavMovies(val, item)} />
   )
 }
 
-const mapStateToProps = ({movies, moviesList}) => ({
+const mapStateToProps = ({ movies, moviesList }) => ({
   movies,
-  moviesList
+  moviesList,
 })
 
 const mapDispatchToProps = {
-  getMovieData
-};
+  getMovieData,
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListComponent);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ListComponent)
