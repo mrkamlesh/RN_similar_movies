@@ -2,10 +2,10 @@ import React, { useEffect } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
 import styles from './styles'
-import { getSimilarMovies } from '../../actions'
+import { getSimilarMovies, setMovieToWatch } from '../../actions'
 import SwiperComponent from '../../components/SwiperComponent/swiperComponent'
 
-const HomeScreen = ({ similarMoviesList, getSimilarMovies, similarMovies }) => {
+const HomeScreen = ({ similarMoviesList, getSimilarMovies, similarMovies, setMovieToWatch }) => {
   useEffect(() => getSimilarMovies(), [])
 
   const isNotEmpty = similarMovies.length > 0
@@ -18,7 +18,11 @@ const HomeScreen = ({ similarMoviesList, getSimilarMovies, similarMovies }) => {
   )
 
   const renderSwiper = () =>
-    isNotEmpty && isFetched ? <SwiperComponent movies={similarMoviesList} /> : renderSpinner()
+    isNotEmpty && isFetched ? (
+      <SwiperComponent movies={similarMoviesList} setMovieToWatch={setMovieToWatch} />
+    ) : (
+      renderSpinner()
+    )
 
   const { container } = styles
   return <View style={container}>{renderSwiper()}</View>
@@ -31,6 +35,7 @@ const mapStateToProps = ({ similarMoviesList, similarMovies }) => ({
 
 const mapDispatchToProps = {
   getSimilarMovies,
+  setMovieToWatch,
 }
 
 export default connect(

@@ -3,7 +3,7 @@ import { Text, FlatList, View, ImageBackground } from 'react-native'
 import styles from './styles'
 import { tmdbImage } from '../../utils/images'
 
-const MoviesListDetailed = ({ moviesList }) => {
+const MoviesListDetailed = ({ movies }) => {
   const keyExtractor = item => item.id
   const renderItem = ({ item }) => {
     const uri = tmdbImage(item.data.poster_path)
@@ -21,7 +21,7 @@ const MoviesListDetailed = ({ moviesList }) => {
 
   return (
     <FlatList
-      data={moviesList}
+      data={movies}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
       style={styles.listContainer}

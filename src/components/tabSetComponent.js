@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import MaterialTabs from 'react-native-material-tabs'
 import { View } from 'react-native'
 import MyMovies from './myMovies'
+import MoviesToWatch from './moviesToWatch'
 
 const TabSetComponent = () => {
   const [selectedTab, setSelectedTab] = useState()
 
   const renderTab = () => {
-    if (selectedTab === 1) return <View />
+    if (selectedTab === 1) return <MoviesToWatch />
     return <MyMovies />
   }
 

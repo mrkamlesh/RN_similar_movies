@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import Swiper from 'react-native-deck-swiper'
 import CardComponent from '../cardComponent/cardComponent'
 
-const SwiperComponent = ({ movies }) => (
+const SwiperComponent = ({ movies, setMovieToWatch }) => (
   <View>
     <Swiper
       useViewOverflow={false}
@@ -15,6 +15,7 @@ const SwiperComponent = ({ movies }) => (
       onSwipedAll={() => {
         console.log('onSwipedAll')
       }}
+      onSwipedRight={item => setMovieToWatch(movies[item])}
       cardIndex={0}
       backgroundColor="#4FD0E9"
       stackSize={3}

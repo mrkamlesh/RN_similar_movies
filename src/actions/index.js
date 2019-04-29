@@ -120,3 +120,8 @@ export const getSimilarMovies = () => dispatch => {
     data.forEach(movie => dispatch(getSimilarMovieData(movie.Name)))
   })
 }
+
+export const setMovieToWatch = movie => ({
+  type: 'MOVIE_TO_WATCH_ADDED',
+  movie,
+})
