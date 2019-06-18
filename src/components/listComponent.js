@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovieData } from '../actions'
-import MoviesList from './moviesList'
+import MoviesList from './moviesListComponent/moviesList'
 
-const ListComponent = ({ selectedMovies }) => {
+const ListComponent = ({ selectedMovies, changeCounter }) => {
   const [moviesFetched, setmoviesFetched] = useState(false)
   const [favMovies, setfavMovies] = useState([])
   const dispatch = useDispatch()
@@ -23,6 +23,7 @@ const ListComponent = ({ selectedMovies }) => {
   }, [movies, moviesList])
 
   const changeFavMovies = (val, item) => {
+    changeCounter(val)
     let newFavMovies = [...favMovies]
     if (!val) {
       newFavMovies.push(item)
@@ -33,9 +34,7 @@ const ListComponent = ({ selectedMovies }) => {
     selectedMovies(newFavMovies)
   }
 
-  return (
-    <MoviesList moviesList={moviesList} selectItem={(val, item) => changeFavMovies(val, item)} />
-  )
+  return <MoviesList moviesList={moviesList} selectItem={changeFavMovies} />
 }
 
 export default ListComponent
