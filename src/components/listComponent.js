@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getMovieData } from '../actions'
 import MoviesList from './moviesList'
 
-const ListComponent = ({ movies, moviesList = [], getMovieData, selectedMovies }) => {
+const ListComponent = ({ selectedMovies }) => {
   const [moviesFetched, setmoviesFetched] = useState(false)
   const [favMovies, setfavMovies] = useState([])
+  const dispatch = useDispatch()
+
+  const { movies, moviesList = [] } = useSelector(state => ({
+    movies: state.movies,
+    moviesList: state.moviesList,
+  }))
 
   useEffect(() => {
     if (movies.length > 0 && !moviesFetched) {
       movies.forEach(movie => {
-        getMovieData(movie.name)
+        dispatch(getMovieData(movie.name))
       })
       setmoviesFetched(true)
     }
@@ -32,16 +38,4 @@ const ListComponent = ({ movies, moviesList = [], getMovieData, selectedMovies }
   )
 }
 
-const mapStateToProps = ({ movies, moviesList }) => ({
-  movies,
-  moviesList,
-})
-
-const mapDispatchToProps = {
-  getMovieData,
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListComponent)
+export default ListComponent
