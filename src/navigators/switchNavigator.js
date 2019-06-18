@@ -1,16 +1,15 @@
-import React from 'react'
-import { createSwitchNavigator, createStackNavigator } from 'react-navigation'
+import { createSwitchNavigator } from 'react-navigation'
 import LoginScreen from '../screens/loginScreen/loginScreen'
-import RootStack from '../navigators/rootStack'
 import OnboardingScreen from '../screens/onboardingScreen/onboardingScreen'
+import MainNavigator from './mainNavigator'
 
-export default SwitchNavigator = createSwitchNavigator(
+export default createSwitchNavigator(
   {
-    App: RootStack,
+    App: MainNavigator,
     Auth: LoginScreen,
-    Onboarding: OnboardingScreen
+    Onboarding: OnboardingScreen,
   },
   {
     initialRouteName: 'Auth',
   }
-);
+)

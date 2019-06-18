@@ -4,14 +4,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import HomeScreen from '../screens/homeScreen/homeScreen'
 import ProfileScreen from '../screens/profileScreen/profileScreen'
 
-const RootStack = createBottomTabNavigator(
+const TabBar = createBottomTabNavigator(
   {
     Home: HomeScreen,
     Profile: ProfileScreen,
   },
   {
     navigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      tabBarIcon: ({ horizontal, tintColor }) => {
         const { routeName } = navigation.state
         let iconName
         if (routeName === 'Home') {
@@ -31,4 +31,4 @@ const RootStack = createBottomTabNavigator(
   }
 )
 
-export default RootStack
+export default TabBar
