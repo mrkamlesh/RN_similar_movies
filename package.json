@@ -16,6 +16,7 @@
     "plist": "^3.0.1",
     "react": "^16.8.3",
     "react-native": "0.59.2",
+    "react-native-bouncing-preloader": "^1.0.1",
     "react-native-deck-swiper": "^1.6.7",
     "react-native-fbsdk": "^0.8.0",
     "react-native-material-tabs": "^3.8.1",

@@ -1,9 +1,16 @@
 import React, { useEffect } from 'react'
-import { View, ActivityIndicator } from 'react-native'
+import { View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import BouncingPreloader from 'react-native-bouncing-preloader'
 import styles from './styles'
 import { getSimilarMovies, setMovieToWatch } from '../../actions'
 import SwiperComponent from '../../components/SwiperComponent/swiperComponent'
+import oscar from '../../assets/oscar.png'
+import cam from '../../assets/cam.png'
+import masks from '../../assets/masks.png'
+import column from '../../assets/column.png'
+import hurdy from '../../assets/hurdy.png'
+import quill from '../../assets/quill.png'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -20,7 +27,7 @@ const HomeScreen = () => {
 
   const renderSpinner = () => (
     <View style={styles.spinnerContainer}>
-      <ActivityIndicator size="large" color="#0000ff" />
+      <BouncingPreloader icons={[oscar, cam, masks, column, hurdy, quill]} />
     </View>
   )
 

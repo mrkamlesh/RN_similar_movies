@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
   spinnerContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    marginBottom: 80,
   },
 })
 export default styles
