@@ -17,7 +17,7 @@ export const fetchingError = () => ({
   type: 'FETCH_MOVIES_FAILURE',
 })
 
-export const fetchContacts = () => (dispatch, getState) => {
+export const fetchOnboardingMovies = () => (dispatch, getState) => {
   const { token } = getState()
 
   const responseInfoCallback = (error, res) => {
