@@ -5,11 +5,53 @@ on: [push, pull_request]
 jobs:
   install-and-test:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v2
-      - name: Install npm dependencies
+      - name: Install dependencies with yarn
         run: |
           yarn
       - name: Run tests
         run: |
           yarn test
+      - name: Run TypeScript
+        run: |
+          yarn tsc
+
+  build-android:
+    needs: install-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies with yarn
+        run: |
+          yarn
+      - name: Build Android Release
+        run: |
+          cd android && ./gradlew assembleRelease -PMYAPP_UPLOAD_STORE_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}' -PMYAPP_UPLOAD_KEY_PASSWORD='${{ secrets.KEYSTORE_PASSWORD }}'
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: app-release.apk
+          path: android/app/build/outputs/apk/release/
+  # build-ios:
+  #   needs: install-and-test
+  #   runs-on: macos-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Install dependencies with yarn
+  #       run: |
+  #         yarn
+  #     - name: Install pod dependencies
+  #       run: |
+  #         cd ios && pod install
+  #     - name: Build app
+  #       run: |
+  #         cd ios
+  #         xcodebuild -workspace similarMovies.xcworkspace -scheme similarMovies archive -archivePath similarMovies.xcarchive -allowProvisioningUpdates
+  #         xcodebuild -exportArchive -archivePath ./similarMovies.xcarchive -exportPath . -exportOptionsPlist similarMovies/Info.plist
+  #         mv similarMovies.ipa ../similarMovies.ipa
+  #     - name: Upload Artifact
+  #       uses: actions/upload-artifact@v1
+  #       with:
+  #         name: myapp.ipa
+  #         path: ios/build/
